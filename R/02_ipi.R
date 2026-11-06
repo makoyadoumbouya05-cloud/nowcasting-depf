@@ -47,6 +47,9 @@ rownames(ipi_gliss) <- paste0("T", substr(trim_ipi, 6, 6), "-", substr(trim_ipi,
 trim_commun <- intersect(colnames(cibles), rownames(ipi_gliss))
 
 # --- 9. Contrôles -------------------------------------------------
+annee_ipi <- as.integer(substr(rownames(ipi_gliss), 4, 7))
+trim_num  <- as.integer(substr(rownames(ipi_gliss), 2, 2))
+
 stopifnot(
   ncol(ipi_num) == 3,
   nrow(ipi_num) >= 42,
@@ -54,6 +57,7 @@ stopifnot(
   all(colnames(ipi_num) == series_ipi),
   rownames(ipi_gliss)[1] == "T1-2016",
   "T2-2026" %in% rownames(ipi_gliss),
+  all(diff(annee_ipi * 4 + trim_num) > 0),
   length(trim_commun) >= 42,
   sum(!is.na(ipi_gliss[trim_commun, 1])) >= 38,
   abs(ipi_gliss["T2-2026", "Industries Extractives"] - (-28.8)) < 0.05
