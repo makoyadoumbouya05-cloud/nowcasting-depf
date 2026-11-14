@@ -19,7 +19,8 @@ Projet réalisé dans le cadre d'un stage. Travail en cours.
 |---|---|---|
 | 1 | Cibles : glissement annuel de la VA des 15 secteurs | Terminée et vérifiée |
 | 2a | Indices de production industrielle (extraction, électricité, industrie hors raffinage) | Terminée et vérifiée |
-| 2b | Autres indicateurs mensuels par secteur | En attente de données |
+| 2b | Commerce extérieur : importations et exportations par groupement d'utilisation | Terminée et vérifiée |
+| 2c | Autres indicateurs mensuels par secteur (séries DEPF, zone Euro) | En attente de données |
 | 3 | Modélisation et évaluation hors échantillon | À faire |
 | 4 | Application R Shiny | À faire |
 
@@ -29,6 +30,7 @@ Projet réalisé dans le cadre d'un stage. Travail en cours.
 R/
   01_cibles.R    Téléchargement de la VA et calcul du glissement annuel
   02_ipi.R       Chargement des indices de production et calcul du glissement annuel
+  03_commerce_exterieur.R   Chargement du commerce extérieur et calcul du glissement annuel
 ```
 
 ## Utilisation
@@ -39,13 +41,22 @@ R/
 3. Dans `R/02_ipi.R`, adapter la ligne `chemin_ipi` vers le fichier Excel
    des indices de production, puis lancer le script. Il vérifie lui-même
    l'ordre chronologique et la cohérence des données.
+4. Dans `R/03_commerce_exterieur.R`, adapter la ligne `chemin_ce` vers le fichier
+   Excel (feuilles 7 et 8), puis lancer le script. Il produit `imp_gl2` (9 x 48)
+   et `exp_gl2` (8 x 48), en %, de T1-2014 à T4-2025. Il vérifie lui-même
+   l'ordre chronologique et la cohérence des données.
 
 ## Données
 
 - VA sectorielle : Haut-Commissariat au Plan (HCP), portail data.gov.ma,
   jeu de données `data_i4279`. Téléchargée automatiquement par le script.
 - Indices de production industrielle : Haut-Commissariat au Plan (HCP),
-  enquête de la production industrielle. Le fichier n'est pas stocké dans le dépôt.
+  enquête de la production industrielle. Le fichier n'est pas stocké dans le      dépôt.
+- Commerce extérieur : importations et exportations mensuelles par groupement
+  d'utilisation, 2014M1 à 2025M12. Le fichier n'est pas stocké dans le dépôt.
+  Séries écartées : « OR INDUSTRIEL » (trop de mois manquants, import et export)
+  et « PRODUITS FINIS D'EQUIPEMENT AGRICOLE » (export, série nulle).
+  Les données de 2026 ne sont pas encore intégrées.
 - Aucune donnée n'est stockée dans le dépôt.
 
 ## Méthode (résumé)
