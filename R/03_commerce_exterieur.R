@@ -4,7 +4,7 @@
 library(readxl)
 
 # 1. Lecture -------------------------------------------------------------
-chemin_ce <- "data/Projet DEPF.xlsx"
+chemin_ce <- "data/Projet DEPF.xlsx"   # à adapter sur chaque ordinateur
 imp_brut <- read_excel(chemin_ce, sheet = 7, col_names = FALSE, col_types = "text")
 exp_brut <- read_excel(chemin_ce, sheet = 8, col_names = FALSE, col_types = "text")
 
