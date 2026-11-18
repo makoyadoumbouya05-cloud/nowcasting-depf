@@ -21,7 +21,7 @@ Projet réalisé dans le cadre d'un stage. Travail en cours.
 | 2a | Indices de production industrielle (extraction, électricité, industrie hors raffinage) | Terminée et vérifiée |
 | 2b | Commerce extérieur : importations et exportations par groupement d'utilisation | Terminée et vérifiée |
 | 2c | Indicateurs mensuels par secteur (DEPF, ANRT) : script 04 | Terminée avec les données reçues ; séries à compléter |
-| 2d | Demande extérieure (zone Euro) | À faire |
+| 2d | Demande extérieure : PIB de la zone Euro (script 05) | Terminée ; indicateurs sectoriels de demande étrangère à faire |
 | 3 | Modélisation et évaluation hors échantillon | À faire |
 | 4 | Application R Shiny | À faire |
 
@@ -33,6 +33,7 @@ R/
   02_ipi.R       Chargement des indices de production et calcul du glissement annuel
   03_commerce_exterieur.R   Chargement du commerce extérieur et calcul du glissement annuel
   04_indicateurs_depf.R     Indicateurs DEPF et ANRT : glissement annuel trimestriel
+  05_zone_euro.R   PIB de la zone Euro (Eurostat) : glissement annuel trimestriel
 ```
 
 ## Utilisation
@@ -52,6 +53,8 @@ R/
    la liste "indicateurs_gl" (8 séries trimestrielles, en %). Les séries
    s'arrêtent à des dates différentes ; elles seront complétées à l'arrivée
    des données manquantes.
+   6. Installer le package `eurostat`, puis lancer `R/05_zone_euro.R` : il produit
+   "ea_gl" (glissement annuel du PIB de la zone Euro, en %).
    
 ## Données
 - VA sectorielle : Haut-Commissariat au Plan (HCP), portail data.gov.ma,
@@ -68,6 +71,10 @@ R/
   (DEPF) ; parc Internet (ANRT). Les fichiers ne sont pas stockés dans le dépôt.
   Séries écartées : nuitées et trafic de voix mobile.
 - Aucune donnée n'est stockée dans le dépôt.
+- - Zone Euro : PIB en volume chaîné 2020, désaisonnalisé et corrigé des jours
+  ouvrables (Eurostat, jeu namq_10_gdp, zone EA20), téléchargé par le package
+  "eurostat" à chaque exécution. Les chiffres sont révisés par Eurostat et le
+  T4-2026 n'est pas encore disponible.
 
 ## Méthode (résumé)
 
